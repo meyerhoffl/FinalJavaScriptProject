@@ -1,0 +1,80 @@
+.button {
+  @include button-base;
+  @include button-size;
+  @include button-style;
+  @include radius;
+  @include single-transition;
+  @include inset-shadow($active);
+}
+
+
+#googleMap {height: 300px;
+}
+
+body{background: url(background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding: 0;
+  margin: 0;
+}
+body {
+  background-color: #e0f6fb;
+
+}
+
+h1 {
+  color: #ff0000;
+  font-family: "LobsterTwoBoldItalic";
+  font-size: 80pt;
+  line-height: 80pt;
+}
+
+@font-face {
+  font-family: "LobsterTwoBoldItalic";
+  src: url('fonts/LobsterTwo-BoldItalic-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.panel{
+  background-color: #ffffff;
+}
+
+.heading{
+  font-weight: bold;
+  color: #7e070d;
+}
+
+#Reset{
+background-color: #ff0000;
+border-color: #660000;
+}
+
+#Reset:hover, #Reset:focus {
+  background-color: #7e070d; }
+
+#Distances{
+  background-color: #03c3f3;
+  border-color: #044758;
+}
+
+#Distances:hover, #Distances:focus {
+  background-color: #1489a6; }
+
+
+.bold{
+  font-weight: bold;
+  color: #044758;
+}
+
+
+.route{
+  color: #1489a6;
+}
+
+.route:hover {
+  color: #044758;
+}
+
