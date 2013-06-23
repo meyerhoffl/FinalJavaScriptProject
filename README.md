@@ -7,4 +7,4 @@ with a list of routes based on the distance they selected. The user can the view
 route. Users may press the reset button to clear the current routes.
 
 Technologies Used:
-HTML, CSS, JavaScript, Jquery, and the Google API.
+HTML, CSS, JavaScript, Jquery, and the GoogleMaps API.
