@@ -8,7 +8,8 @@ $(document).ready(function() {
     var address = x;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        coordinates = results[0].geometry.location.jb + ", " + results[0].geometry.location.kb;
+        coordinates = results[0].geometry.location.lb + ", " + results[0].geometry.location.mb;
+        console.log(results);
         drawPath(coordinates);
       }
       else {
@@ -67,6 +68,7 @@ $(document).ready(function() {
       var destinations = response.destinationAddresses;
       var outputDiv = document.getElementById('outputDiv');
       outputDiv.innerHTML = '<p class="heading">'+ origins+ ' to: </p>';
+
       for (var i = 0; i < origins.length; i++) {
         var results = response.rows[i].elements;
         for (var j = 0; j < results.length; j++) {
@@ -102,6 +104,7 @@ $(document).ready(function() {
       }
       else {
         outputDiv.innerHTML += oneMile;
+
       }
     };
 
@@ -209,6 +212,9 @@ $(document).ready(function() {
 
     function clearPage() {
       $("#outputDiv").html(" ");
+      $('#elevation_chart').hide();
+      initialize();
+
     };
 
 // Call Functions on button clicks *********************************************
