@@ -8,13 +8,13 @@ $(document).ready(function() {
     var address = x;
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        coordinates = results[0].geometry.location.lb + ", " + results[0].geometry.location.mb;
-        console.log(results);
+        coordinates = results[0].geometry.location.mb + ", " + results[0].geometry.location.nb;
         drawPath(coordinates);
       }
       else {
         alert("Geocode was not successful for the following reason: " + status);
       }
+      console.log(results);
     });
   }
 
@@ -147,12 +147,10 @@ $(document).ready(function() {
 
   function drawPath(x) {
     var destination = x;
-    console.log(destination);
     var destvals = destination.split(",");
     var d1 = parseFloat(destvals[0]);
     var d2 = parseFloat(destvals[1]);
     var origin = $("#origin option:selected").val();
-    console.log(origin);
     var origvalues = origin.split(",");
     var o1 = parseFloat(origvalues[0]);
     var o2 = parseFloat(origvalues[1]);
@@ -161,6 +159,7 @@ $(document).ready(function() {
     var origin = new google.maps.LatLng(o1, o2);
     var finaldest = new google.maps.LatLng(d1, d2);
     var path = [origin, finaldest];
+
     // Create a PathElevationRequest object using this array.
     // Ask for 256 samples along that path.
     var pathRequest = {
@@ -170,6 +169,7 @@ $(document).ready(function() {
      // Initiate the path request.
     elevator.getElevationAlongPath(pathRequest, plotElevation);
     calcRoute(origin, destination);
+
   }
 
   // Takes an array of ElevationResult objects, draws the path on the map
@@ -177,6 +177,7 @@ $(document).ready(function() {
   function plotElevation(results, status) {
     if (status == google.maps.ElevationStatus.OK) {
       elevations = results;
+      console.log(results);
       // Extract the elevation samples from the returned results
       // and store them in an array of LatLngs.
       var elevationPath = [];
