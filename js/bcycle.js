@@ -4,18 +4,17 @@ $(document).ready(function() {
 
 // Change Addresses to Coordinates ******************************************************
 
-  function getCoordinates(x) {
-    var address = x;
+  function getCoordinates(address) {
     geocoder.geocode( { 'address': address}, function(results, status) {
       if (status == google.maps.GeocoderStatus.OK) {
-        coordinates = results[0].geometry.location.mb + ", " + results[0].geometry.location.nb;
+        coordinates = results[0].geometry.location.lat() + ", " + results[0].geometry.location.lng();
         drawPath(coordinates);
       }
       else {
         alert("Geocode was not successful for the following reason: " + status);
       }
-      console.log(results);
     });
+
   }
 
 // Get Destination for Plotting Elevation ***********************************************
@@ -177,7 +176,6 @@ $(document).ready(function() {
   function plotElevation(results, status) {
     if (status == google.maps.ElevationStatus.OK) {
       elevations = results;
-      console.log(results);
       // Extract the elevation samples from the returned results
       // and store them in an array of LatLngs.
       var elevationPath = [];
